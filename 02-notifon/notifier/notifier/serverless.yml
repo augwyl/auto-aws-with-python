@@ -23,7 +23,7 @@ provider:
   profile: pythonAutomation
   region: ap-southeast-2
   environment:
-    SLACK_WEBHOOK_URL: $(file(./config.${self:provider.stage}.json):notifier.slack_webhook_url)
+    SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
 
 # you can overwrite defaults here
 #  stage: dev
@@ -116,3 +116,6 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+plugins:
+  - serverless-python-requirements

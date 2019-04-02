@@ -13,8 +13,8 @@ setuptools = "*"
 
 [packages]
 boto3 = "*"
-click = "*"
 pycodestyle = "*"
+click = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"

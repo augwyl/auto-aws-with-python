@@ -10,6 +10,7 @@ bucket_manager = None
 domain_manager = None
 #s3 = session.resource('s3')
 
+# decorator
 @click.group()
 @click.option('--profile', default=None,
                help="Use a given AWS profile.")
@@ -59,11 +60,12 @@ def sync(pathname, bucket):
     print(bucket_manager.get_bucket_url(bucket_manager.s3.Bucket(bucket)))
 
 @cli.command('setup-domain')
-@click.argument('domain')
+#@cli.argument('domain')
 @click.argument('bucket')
 def setup_domain(domain, bucket):
     """Configure DOMAIN to point to BUCKET."""
-    zone = domain_manager.find_hosted_zone(domain)
+    zone = domain_manager.find_hosted_zone(domain) \
+        or domain_manager.create_hosted_zone(domain)
     print(zone)
 
 if __name__ == '__main__':
